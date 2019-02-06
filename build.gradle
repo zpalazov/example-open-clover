@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-clover-plugin:2.2.1'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'groovy'
+apply plugin: 'com.bmuschko.clover'
+apply plugin: 'com.bmuschko.clover'
+
+// open clover plugin configuration
+clover {
+
+    report {
+        html = true
+        pdf = true
+        filter = 'log,main,getters,setters'
+    }
+}
+
+dependencies {
+    // groovy
+    compile 'org.codehaus.groovy:groovy-all:2.4.13'
+    compile 'commons-io:commons-io:2.4'
+
+    // Use the awesome Spock testing and specification framework
+    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.4'
+
+    clover 'org.openclover:clover:4.2.0'
+}
